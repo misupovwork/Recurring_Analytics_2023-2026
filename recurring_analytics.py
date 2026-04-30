@@ -1,5 +1,5 @@
 # To run:
-#   & "C:/Users/mykha/AppData/Local/Programs/Python/Python313/python.exe" -m streamlit run "C:\Users\mykha\PycharmProjects\Donation-Analytics\recurring_analytics.py"
+#   & "C:/Users/mykha/AppData/Local/Programs/Python/Python313/python.exe" -m streamlit run "C:\Users\mykha\PycharmProjects\Donation-Analytics\recurring_analysis.py"
 
 import streamlit as st
 import pandas as pd
@@ -506,8 +506,7 @@ with t4:
         if val >= 40:    return "background-color: #7c2d12; color: #ffedd5;"
         return                  "background-color: #450a0a; color: #fecaca;"
 
-    fmt_cohort = cohort_table.applymap(lambda v: f"{v:.0f}%" if not pd.isna(v) else "")
-    styled = cohort_table.style.applymap(style_cohort).format(
+    styled = cohort_table.style.map(style_cohort).format(
         lambda v: f"{v:.0f}%" if not pd.isna(v) else ""
     )
     st.dataframe(styled, use_container_width=True)
